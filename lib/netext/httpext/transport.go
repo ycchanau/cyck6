@@ -71,6 +71,7 @@ func newTransport(
 
 // Helper method to finish the tracer trail, assemble the tag values and emits
 // the metric samples for the supplied unfinished request.
+//
 //nolint:nestif,funlen
 func (t *transport) measureAndEmitMetrics(unfReq *unfinishedRequest) *finishedRequest {
 	trail := unfReq.tracer.Done()
@@ -147,17 +148,17 @@ func (t *transport) measureAndEmitMetrics(unfReq *unfinishedRequest) *finishedRe
 		if failed == 1 {
 			trail.Failed.Bool = true
 		}
-		trail.Samples = append(trail.Samples,
-			metrics.Sample{
-				TimeSeries: metrics.TimeSeries{
-					Metric: t.state.BuiltinMetrics.HTTPReqFailed,
-					Tags:   tagsAndMeta.Tags,
-				},
-				Time:     trail.EndTime,
-				Metadata: tagsAndMeta.Metadata,
-				Value:    failed,
-			},
-		)
+		// trail.Samples = append(trail.Samples,
+		// 	metrics.Sample{
+		// 		TimeSeries: metrics.TimeSeries{
+		// 			Metric: t.state.BuiltinMetrics.HTTPReqFailed,
+		// 			Tags:   tagsAndMeta.Tags,
+		// 		},
+		// 		Time:     trail.EndTime,
+		// 		Metadata: tagsAndMeta.Metadata,
+		// 		Value:    failed,
+		// 	},
+		// )
 	}
 	metrics.PushIfNotDone(t.ctx, t.state.Samples, trail)
 	return result
