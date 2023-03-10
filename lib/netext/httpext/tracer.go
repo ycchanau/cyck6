@@ -64,60 +64,6 @@ func (tr *Trail) SaveSamples(builtinMetrics *metrics.BuiltinMetrics, ctm *metric
 			Metadata: ctm.Metadata,
 			Value:    metrics.D(tr.Duration),
 		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqBlocked,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.Blocked),
-		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqConnecting,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.Connecting),
-		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqTLSHandshaking,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.TLSHandshaking),
-		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqSending,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.Sending),
-		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqWaiting,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.Waiting),
-		},
-		{
-			TimeSeries: metrics.TimeSeries{
-				Metric: builtinMetrics.HTTPReqReceiving,
-				Tags:   ctm.Tags,
-			},
-			Time:     tr.EndTime,
-			Metadata: ctm.Metadata,
-			Value:    metrics.D(tr.Receiving),
-		},
 	}...)
 }
 
