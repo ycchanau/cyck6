@@ -48,6 +48,15 @@ func (tr *Trail) SaveSamples(builtinMetrics *metrics.BuiltinMetrics, ctm *metric
 	tr.Samples = append(tr.Samples, []metrics.Sample{
 		{
 			TimeSeries: metrics.TimeSeries{
+				Metric: builtinMetrics.HTTPReqs,
+				Tags:   ctm.Tags,
+			},
+			Time:     tr.EndTime,
+			Metadata: ctm.Metadata,
+			Value:    1,
+		},
+		{
+			TimeSeries: metrics.TimeSeries{
 				Metric: builtinMetrics.HTTPReqDuration,
 				Tags:   ctm.Tags,
 			},

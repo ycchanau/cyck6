@@ -84,7 +84,7 @@ func RegisterBuiltinMetrics(registry *Registry) *BuiltinMetrics {
 		Checks:        registry.MustNewMetric(ChecksName, Rate),
 		GroupDuration: registry.MustNewMetric(GroupDurationName, Trend, Time),
 
-		// HTTPReqs:        registry.MustNewMetric(HTTPReqsName, Counter),
+		HTTPReqs: registry.MustNewMetric(HTTPReqsName, Counter),
 		// HTTPReqFailed:   registry.MustNewMetric(HTTPReqFailedName, Rate),
 		HTTPReqDuration: registry.MustNewMetric(HTTPReqDurationName, Trend, Time),
 		// HTTPReqBlocked:        registry.MustNewMetric(HTTPReqBlockedName, Trend, Time),
